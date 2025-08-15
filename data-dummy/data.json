@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "userId": "a1b2c3d4",
+      "userName": "Admin",
+      "userMail": "admin@example.com",
+      "userPhone": "1234567890",
+      "userPassword": "$2a$10$N9qo8uLOickgx2ZMRZoMy.Mrq4H3d8J1F6Q5UZ7Xt1JNehdC3.YGq",
+      "reportHistory": [],
+      "createdAt": "2023-11-20T12:00:00Z"
+    }
+  ],
+  "reports": [
+    {
+      "idReport": "r1s2t3u4",
+      "reportedBy": "a1b2c3d4",
+      "nameChild": "Ana López",
+      "ageChild": 8,
+      "genderChild": "female",
+      "descriptionChild": "Estatura 1.20m, pelo negro",
+      "photoChild": [],
+      "dateLostChild": "2023-11-20T00:00:00Z",
+      "lastAddressChild": "Calle 123, Bogotá",
+      "coordinatesDisappearanceChild": null,
+      "descriptionDisappearanceChild": "Vestía uniforme escolar",
+      "statusChild": "missing",
+      "createdAt": "2023-11-20T12:30:00Z"
+    }
+  ]
+}
