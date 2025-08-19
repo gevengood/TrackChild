@@ -28,9 +28,8 @@ El sistema prioriza los siguientes atributos de calidad:
 - Factory centraliza la lógica de creación y gestión de objetos, facilitando la mantenibilidad y escalabilidad.
 
 **Diagramas:**
-- [Diagrama de clases UML](https://drive.google.com/tu-diagrama-clases)
-- [Diagrama de casos de uso](https://drive.google.com/tu-diagrama-casos-uso)
-- [Diagrama de secuencia](https://drive.google.com/tu-diagrama-secuencia)
+- [Diagrama de clases UML](https://drive.google.com/file/d/17cHlH5LI3kB1j3lqiMDSo5q3FXwu7wIB/view?usp=sharing)
+
 
 ## 💻 Implementación
 
@@ -71,4 +70,11 @@ La estructura del código es modular:
 ```sh
 npm install
 
+
+
+---
+*Para instalar dependencias:*
+```
+```sh
 node app.js
+```
