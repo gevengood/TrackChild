@@ -27,9 +27,10 @@ El sistema prioriza los siguientes atributos de calidad:
 - Singleton asegura una única instancia de conexión a la base de datos, evitando errores y mejorando el rendimiento.
 - Factory centraliza la lógica de creación y gestión de objetos, facilitando la mantenibilidad y escalabilidad.
 
+...
 **Diagramas:**
-- [Diagrama de clases UML](https://drive.google.com/file/d/17cHlH5LI3kB1j3lqiMDSo5q3FXwu7wIB/view?usp=sharing)
-
+- <a href="https://drive.google.com/file/d/17cHlH5LI3kB1j3lqiMDSo5q3FXwu7wIB/view?usp=sharing" target="_blank">Diagrama de clases UML</a>
+...
 
 ## 💻 Implementación
 
