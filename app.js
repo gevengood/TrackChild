@@ -1,3 +1,34 @@
+/**
+ * Archivo principal de la aplicación TrackChild.
+ * Configura y ejecuta el servidor Express, define las rutas para usuarios y reportes.
+ * 
+ * Características:
+ *  - Inicializa Express y configura CORS y JSON.
+ *  - Define rutas REST para usuarios y reportes (GET, POST, PUT, DELETE).
+ *  - Maneja respuestas y errores HTTP.
+ *  - Inicia el servidor en el puerto 3035.
+ * 
+ * Rutas de usuarios:
+ *   GET    /users         - Obtiene todos los usuarios.
+ *   POST   /users         - Crea un nuevo usuario.
+ *   GET    /users/:id     - Obtiene usuario por ID.
+ *   PUT    /users/:id     - Actualiza usuario por ID.
+ *   DELETE /users/:id     - Elimina usuario por ID.
+ * 
+ * Rutas de reportes:
+ *   GET    /reports       - Obtiene todos los reportes.
+ *   POST   /reports       - Crea un nuevo reporte.
+ *   GET    /reports/:id   - Obtiene reporte por ID.
+ *   PUT    /reports/:id   - Actualiza reporte por ID.
+ *   DELETE /reports/:id   - Elimina reporte por ID.
+ * 
+ * Dependencias:
+ *  - express: Framework para servidor HTTP.
+ *  - cors: Middleware para habilitar CORS.
+ *  - userController: Controlador de usuarios.
+ *  - reportController: Controlador de reportes.
+ */
+
 const express = require('express');
 const cors = require('cors');
 const { 

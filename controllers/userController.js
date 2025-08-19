@@ -1,3 +1,20 @@
+/**
+ * Controlador de usuarios.
+ * Proporciona funciones para gestionar usuarios en la base de datos Firebase.
+ * 
+ * Funciones:
+ *  - getAllUsers: Obtiene todos los usuarios (sin contraseñas).
+ *  - createUser: Crea un nuevo usuario usando el patrón Singleton.
+ *  - getUserById: Obtiene un usuario por su ID (sin contraseña).
+ *  - updateUser: Actualiza los datos de un usuario.
+ *  - deleteUser: Elimina un usuario por su ID.
+ * 
+ * Dependencias:
+ *  - firebase: Módulo de conexión a la base de datos.
+ *  - MainFactory: Centraliza el acceso a la fábrica de usuarios.
+ */
+
+
 const firebase = require("../db/firebase");
 const db = typeof firebase.getDB === "function" ? firebase.getDB() : firebase;
 
@@ -5,7 +22,11 @@ const MainFactory = require("./mainFactory");
 const mainFactory = new MainFactory();
 const userFactory = mainFactory.getUserFactory();
 
-// Obtener todos los usuarios
+/**
+ * Obtiene todos los usuarios de la colección "users".
+ * Elimina la propiedad 'userPassword' antes de retornar cada usuario.
+ * @returns {Object} Objeto con mensaje, estado de error y lista de usuarios.
+ */
 const getAllUsers = async () => {
   const snapshot = await db.collection("users").get();
   const users = snapshot.docs.map((doc) => {
@@ -16,7 +37,12 @@ const getAllUsers = async () => {
   return { message: "Usuarios obtenidos", error: false, users };
 };
 
-// Crear un nuevo usuario con Singleton 
+/**
+ * Crea un nuevo usuario usando el patrón Singleton.
+ * Elimina la propiedad 'userPassword' antes de retornar el usuario creado.
+ * @param {Object} userData - Datos del usuario.
+ * @returns {Object} Objeto con mensaje, estado de error y el usuario creado.
+ */
 const createUser = async (userData) => {
   if (!userData) {
     return { message: "No se proporcionaron datos de usuario", error: true };
@@ -36,7 +62,12 @@ const createUser = async (userData) => {
   }
 };
 
-// Obtener usuario por ID 
+/**
+ * Obtiene un usuario por su ID.
+ * Elimina la propiedad 'userPassword' antes de retornar el usuario.
+ * @param {string} userId - ID del usuario.
+ * @returns {Object} Objeto con mensaje, estado de error y el usuario encontrado.
+ */ 
 const getUserById = async (userId) => {
   const doc = await db.collection("users").doc(userId).get();
   if (!doc.exists) {
@@ -47,7 +78,13 @@ const getUserById = async (userId) => {
   return { message: "Usuario encontrado", error: false, user: data };
 };
 
-// Actualizar usuario
+/**
+ * Actualiza los datos de un usuario.
+ * Elimina la propiedad 'userPassword' antes de retornar el usuario actualizado.
+ * @param {string} userId - ID del usuario.
+ * @param {Object} userData - Datos actualizados del usuario.
+ * @returns {Object} Objeto con mensaje, estado de error y el usuario actualizado.
+ */
 const updateUser = async (userId, userData) => {
   try {
     await db.collection("users").doc(userId).update(userData);
@@ -60,7 +97,12 @@ const updateUser = async (userId, userData) => {
   }
 };
 
-// Eliminar usuario
+/**
+ * Elimina un usuario por su ID.
+ * Elimina la propiedad 'userPassword' antes de retornar el usuario eliminado.
+ * @param {string} userId - ID del usuario.
+ * @returns {Object} Objeto con mensaje, estado de error y el usuario eliminado.
+ */
 const deleteUser = async (userId) => {
   try {
     const ref = db.collection("users").doc(userId);
@@ -76,7 +118,9 @@ const deleteUser = async (userId) => {
     return { message: error.message, error: true };
   }
 };
-
+/**
+ * Exporta las funciones del controlador de usuarios.
+ */
 module.exports = {
   getAllUsers,
   createUser,

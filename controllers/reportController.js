@@ -1,3 +1,19 @@
+/**
+ * Controlador de reportes.
+ * Proporciona funciones para gestionar reportes en la base de datos Firebase.
+ * 
+ * Funciones:
+ *  - getAllReports: Obtiene todos los reportes.
+ *  - createReport: Crea un nuevo reporte y actualiza el historial del usuario.
+ *  - getReportById: Obtiene un reporte por su ID.
+ *  - updateReport: Actualiza los datos de un reporte existente.
+ *  - deleteReport: Elimina un reporte y actualiza el historial de todos los usuarios.
+ * 
+ * Dependencias:
+ *  - admin: SDK de Firebase Admin para operaciones avanzadas.
+ *  - firebase: Módulo de conexión a la base de datos.
+ *  - MainFactory: Centraliza el acceso a la fábrica de reportes.
+ */
 const admin = require("firebase-admin");
 const firebase = require("../db/firebase");
 const db = typeof firebase.getDB === "function" ? firebase.getDB() : firebase;
@@ -6,6 +22,10 @@ const MainFactory = require("./mainFactory");
 const mainFactory = new MainFactory();
 const reportFactory = mainFactory.getReportFactory();
 
+/**
+ * Obtiene todos los reportes de la colección "reports".
+ * Objeto con mensaje, estado de error y lista de reportes.
+ */
 
 const getAllReports = async () => {
   const snapshot = await db.collection("reports").get();
@@ -13,7 +33,11 @@ const getAllReports = async () => {
   return { message: "Reportes obtenidos", error: false, reports };
 };
 
-// Crear nuevo reporte
+/**
+ * Crea un nuevo reporte y actualiza el historial del usuario que lo reportó.
+ * @param {Object} reportData - Datos del reporte.
+ * @returns {Object} Objeto con mensaje, estado de error y el reporte creado.
+ */
 const createReport = async (reportData) => {
   if (!reportData) {
     return { message: "No se proporcionaron datos del reporte", error: true };
@@ -38,6 +62,11 @@ const createReport = async (reportData) => {
   }
 };
 
+/**
+ * Obtiene un reporte por su ID.
+ * @param {string} reportId - ID del reporte.
+ * @returns {Object} Objeto con mensaje, estado de error y el reporte encontrado.
+ */
 const getReportById = async (reportId) => {
   const doc = await db.collection("reports").doc(reportId).get();
   if (!doc.exists) {
@@ -45,6 +74,15 @@ const getReportById = async (reportId) => {
   }
   return { message: "Reporte encontrado", error: false, report: doc.data() };
 };
+
+
+/**
+ * Actualiza los datos de un reporte existente.
+ * @param {string} reportId - ID del reporte.
+ * @param {Object} reportData - Datos actualizados del reporte.
+ * @returns {Object} Objeto con mensaje, estado de error y el reporte actualizado.
+ */
+
 
 const updateReport = async (reportId, reportData) => {
   try {
@@ -59,6 +97,12 @@ const updateReport = async (reportId, reportData) => {
     return { message: error.message, error: true };
   }
 };
+
+/**
+ * Elimina un reporte y actualiza el historial de todos los usuarios.
+ * @param {string} reportId - ID del reporte a eliminar.
+ * @returns {Object} Objeto con mensaje, estado de error y el reporte eliminado.
+ */
 
 const deleteReport = async (reportId) => {
   try {
@@ -81,6 +125,11 @@ const deleteReport = async (reportId) => {
     return { message: error.message, error: true };
   }
 };
+
+
+/**
+ * Exporta las funciones del controlador de reportes.
+ */
 
 module.exports = {
   getAllReports,
