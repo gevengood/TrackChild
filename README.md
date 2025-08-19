@@ -69,12 +69,9 @@ La estructura del código es modular:
 *Para instalar dependencias:*
 ```sh
 npm install
-
-
-
----
-*Para instalar dependencias:*
 ```
+
+*Para ejecutar la aplicación:*
 ```sh
 node app.js
 ```
