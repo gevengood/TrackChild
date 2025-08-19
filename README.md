@@ -28,7 +28,10 @@ El sistema prioriza los siguientes atributos de calidad:
 - Factory centraliza la lógica de creación y gestión de objetos, facilitando la mantenibilidad y escalabilidad.
 
 **Diagramas:**
-- <a href="https://drive.google.com/file/d/17cHlH5LI3kB1j3lqiMDSo5q3FXwu7wIB/view?usp=sharing" target="_blank">Diagrama de clases UML</a>
+- Diagrama de clases UML
+
+![alt text](DiagramaUMLpng.png)
+
 
 ## 💻 Implementación
 
